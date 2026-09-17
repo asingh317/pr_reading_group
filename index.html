@@ -1,164 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>P&amp;R Reading Group Bibliography</title>
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body {
-    background: #ffffff;
-    color: #111111;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 16px;
-    line-height: 1.6;
-  }
+:root {
+  --ink: #1c1c1c;
+  --muted: #5a5a5a;
+  --card-bg: rgba(255, 255, 255, 0.90);
+  --card-border: #e2e2e2;
+  --accent: #010b25;
+  --link: #1a4fb4;
+}
 
-  nav {
-    background: #000000;
-    padding: 7px 20px;
-    width: 100%;
-  }
+html, body {
+  min-height: 100%;
+}
 
-  nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-family: "Times New Roman", Times, serif;
-    font-size: 16px;
-  }
+body {
+  color: var(--ink);
+  font-family: -apple-system, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #2f2f2f; /* shows briefly while background.png loads */
+}
 
-  nav a:hover,
-  nav a:focus {
-    text-decoration: underline;
-    outline: none;
-  }
+nav {
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
+  padding: 12px 24px;
+  width: 100%;
+}
 
-  .content {
-    padding: 24px 20px 48px 20px;
-    max-width: 940px;
-  }
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
 
-  h1 {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 0.15em;
-  }
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+  outline: none;
+}
 
-  h2 {
-    font-size: 1.15em;
-    font-weight: bold;
-    margin: 1.6em 0 0.5em 0;
-  }
+.wrap {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 32px 20px 64px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-  .subtitle {
-    margin-bottom: 1em;
-    font-size: 1em;
-  }
+/* shared "shaded square" card */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
 
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
+h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+  color: var(--accent);
+}
 
-  th, td {
-    border: 1px solid #cccccc;
-    padding: 6px 10px;
-    text-align: left;
-    vertical-align: top;
-  }
+h2 {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+}
 
-  th {
-    font-weight: bold;
-    background: #f4f4f4;
-  }
+.subtitle {
+  color: var(--muted);
+  font-size: 1em;
+}
 
-  .col-date { width: 12%; }
-  .col-link { width: 12%; }
-  .col-chosen-by { width: 14%; }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-  td a {
-    color: #0000cc;
-    text-decoration: none;
-  }
+th, td {
+  border: 1px solid #d8d8d8;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
 
-  td a:hover,
-  td a:focus {
-    text-decoration: underline;
-  }
+th {
+  font-weight: 600;
+  background: #f2f2f2;
+}
 
-  .empty {
-    color: #666666;
-    font-style: italic;
-  }
+.col-date { width: 12%; }
+.col-link { width: 12%; }
+.col-chosen-by { width: 14%; }
 
+td a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+td a:hover,
+td a:focus {
+  text-decoration: underline;
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.add-article-btn {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.add-article-btn:hover {
+  opacity: 0.92;
+}
 </style>
+</head>
+<body>
 
 <nav>
   <!-- Nav links go here; the bar is intentionally empty for now. -->
 </nav>
 
-<div class="content">
+<div class="wrap">
 
-  <h1>P&amp;R Reading Group Bibliography</h1>
-  <p class="subtitle">Click the links to access papers.
-  <br>Meetings are scheduled for Thursdays at 4:00 PM ET.</p>
+  <div class="card">
+    <h1>P&amp;R Reading Group Bibliography</h1>
+    <p class="subtitle">Click the links to access papers.
+      <br>Meetings are scheduled for Thursdays at 4:00 PM ET.</p>
+  </div>
 
-  <h2>Fall 2026 Bibliography</h2>
-  <!-- Add a paper by copying one <tr> block: date discussed, full citation,
-       link to the paper, and who chose it. -->
-  <table>
-    <thead>
-      <tr>
-        <th class="col-date">Date</th>
-        <th>Citation</th>
-        <th class="col-link">Link</th>
-        <th class="col-chosen-by">Chosen by</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>3 September, 2026</td>
-        <td>Mix, K. S., &amp; Gentner, D. (2026). How structure-mapping can improve K-12 education. <em>Discover Education</em>, <em>5</em>(1), 288.</td>
-        <td><a href="https://link.springer.com/article/10.1007/s44217-026-01248-9" target="_blank" rel="noopener">Springer</a></td>
-        <td>Julia</td>
-      </tr>
-      <tr>
-        <td>10 September, 2026</td>
-        <td>Li, J., Boni, I., Sandwick, L. R., Sanford, E. M., DeLong, C. M., Wenjie, L., &hellip; &amp; Cantlon, J. F. (2026). Continuity in geometric intuition between humans and monkeys. <em>Proceedings of the National Academy of Sciences</em>, <em>123</em>(30), e2532934123.</td>
-        <td><a href="https://www.pnas.org/doi/abs/10.1073/pnas.2532934123" target="_blank" rel="noopener">PNAS</a></td>
-        <td>Amrit</td>
-      </tr>
-     <tr>
-        <td>17 September, 2026</td>
-        <td>Giaquinto, M. (2008). Visualizing in Mathematics. <em>In Moncuso, P. ed. The Philosophy of Mathematical Practice </em></td>
-        <td><a href="https://academic.oup.com/book/2780/chapter/143286140">OUP</a></td>
-        <td>David</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="card">
+    <h2>Fall 2026 Bibliography</h2>
+    <!-- Add a paper by copying one <tr> block: date discussed, full citation,
+         link to the paper, and who chose it. -->
+    <table>
+      <thead>
+        <tr>
+          <th class="col-date">Date</th>
+          <th>Citation</th>
+          <th class="col-link">Link</th>
+          <th class="col-chosen-by">Chosen by</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>3 September, 2026</td>
+          <td>Mix, K. S., &amp; Gentner, D. (2026). How structure-mapping can improve K-12 education. <em>Discover Education</em>, <em>5</em>(1), 288.</td>
+          <td><a href="https://link.springer.com/article/10.1007/s44217-026-01248-9" target="_blank" rel="noopener">Springer</a></td>
+          <td>Julia</td>
+        </tr>
+        <tr>
+          <td>10 September, 2026</td>
+          <td>Li, J., Boni, I., Sandwick, L. R., Sanford, E. M., DeLong, C. M., Wenjie, L., &hellip; &amp; Cantlon, J. F. (2026). Continuity in geometric intuition between humans and monkeys. <em>Proceedings of the National Academy of Sciences</em>, <em>123</em>(30), e2532934123.</td>
+          <td><a href="https://www.pnas.org/doi/abs/10.1073/pnas.2532934123" target="_blank" rel="noopener">PNAS</a></td>
+          <td>Amrit</td>
+        </tr>
+        <tr>
+          <td>17 September, 2026</td>
+          <td>Giaquinto, M. (2008). Visualizing in Mathematics. <em>In Moncuso, P. ed. The Philosophy of Mathematical Practice </em></td>
+          <td><a href="https://academic.oup.com/book/2780/chapter/143286140">OUP</a></td>
+          <td>David</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <h2>Papers to Read</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Citation</th>
-        <th class="col-link">Link</th>
-        <th class="col-chosen-by">Chosen by</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Dehaene, S., Sabl&eacute;-Meyer, M., &amp; Ciccione, L. (2025). Origins of numbers: A shared language-of-thought for arithmetic and geometry? <em>Trends in Cognitive Sciences</em>, <em>29</em>(6), 526&ndash;540.</td>
-        <td><a href="https://www.sciencedirect.com/science/article/pii/S1364661325000592" target="_blank" rel="noopener">ScienceDirect</a></td>
-        <td>Amrit</td>
-      </tr>
-      <tr>
-        <td>Sabl&eacute;-Meyer, M., Ellis, K., Tenenbaum, J., &amp; Dehaene, S. (2022). A language of thought for the mental representation of geometric shapes. <em>Cognitive Psychology</em>, <em>139</em>, 101527.</td>
-        <td><a href="https://www.sciencedirect.com/science/article/pii/S0010028522000639" target="_blank" rel="noopener">ScienceDirect</a></td>
-        <td>Amrit</td>
-      </tr>
-     <tr>
-        <td>Dillon, M.R. (2026). The cognitive origins of geometry.  <em>Trends in Cognitive Science</em>, <em>30</em>(9), 794-804</td>
-        <td><a href="https://www.sciencedirect.com/science/article/pii/S1364661326000057" target="_blank" rel="noopener">ScienceDirect</a></td>
-        <td>Amrit</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="card">
+    <h2>Papers to Read</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Citation</th>
+          <th class="col-link">Link</th>
+          <th class="col-chosen-by">Chosen by</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Dehaene, S., Sabl&eacute;-Meyer, M., &amp; Ciccione, L. (2025). Origins of numbers: A shared language-of-thought for arithmetic and geometry? <em>Trends in Cognitive Sciences</em>, <em>29</em>(6), 526&ndash;540.</td>
+          <td><a href="https://www.sciencedirect.com/science/article/pii/S1364661325000592" target="_blank" rel="noopener">ScienceDirect</a></td>
+          <td>Amrit</td>
+        </tr>
+        <tr>
+          <td>Sabl&eacute;-Meyer, M., Ellis, K., Tenenbaum, J., &amp; Dehaene, S. (2022). A language of thought for the mental representation of geometric shapes. <em>Cognitive Psychology</em>, <em>139</em>, 101527.</td>
+          <td><a href="https://www.sciencedirect.com/science/article/pii/S0010028522000639" target="_blank" rel="noopener">ScienceDirect</a></td>
+          <td>Amrit</td>
+        </tr>
+        <tr>
+          <td>Dillon, M.R. (2026). The cognitive origins of geometry. <em>Trends in Cognitive Science</em>, <em>30</em>(9), 794-804</td>
+          <td><a href="https://www.sciencedirect.com/science/article/pii/S1364661326000057" target="_blank" rel="noopener">ScienceDirect</a></td>
+          <td>Amrit</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Add an Article</h2>
+    <p class="subtitle" style="margin-bottom: 16px;">
+      Submit a paper below (restricted to andrew email)
+    </p>
+    <a class="add-article-btn" href="FORM_URL" target="_blank" rel="noopener">Open submission form</a>
+  </div>
+
+  <div class="card" id="submitted-card" style="display: none;">
+    <h2>Recently Submitted</h2>
+    <table>
+      <thead>
+        <tr>
+          <th class="col-date">Submitted</th>
+          <th class="col-title">Citation</th>
+          <th class="col-link">Link</th>
+          <th class="col-chosen-by">Chosen by</th>
+        </tr>
+      </thead>
+      <tbody id="submitted-tbody"></tbody>
+    </table>
+  </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script>
+  // Paste the URLs from your Google Form / Sheet setup here:
+  var FORM_URL = "https://forms.gle/Eew5w8r2KtbanQAj8";
+  var RESPONSES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQp3_vLYpNcCWKm17zbtrHpOrd-m3sa7GdkqKLZMGlvnU7Syd3iYjb4OCkctzuTzMZ5iXXafWncLIGV/pub?output=csv";
+
+  document.querySelector('.add-article-btn').href = FORM_URL;
+
+  // Column headers as Google Forms names them by default. If you
+  // reworded a question, update the matching string below.
+  var COL = {
+    timestamp: "Timestamp",
+    link: "Link",
+    name: "Name",
+    title: "Citation"
+  };
+
+  if (RESPONSES_CSV_URL.indexOf("PASTE_YOUR") === -1) {
+    Papa.parse(RESPONSES_CSV_URL, {
+      download: true,
+      header: true,
+      complete: function (results) {
+        var rows = results.data.filter(function (r) { return r[COL.link]; });
+        if (!rows.length) return;
+
+        var tbody = document.getElementById('submitted-tbody');
+        rows.forEach(function (r) {
+          var tr = document.createElement('tr');
+
+          var tdDate = document.createElement('td');
+          tdDate.textContent = r[COL.timestamp] || '';
+
+          var tdTitle = document.createElement('td');
+          tdTitle.textContent = r[COL.title] || '';
+
+          var tdLink = document.createElement('td');
+          var a = document.createElement('a');
+          a.href = r[COL.link];
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.textContent = 'Paper';
+          tdLink.appendChild(a);
+
+          var tdName = document.createElement('td');
+          tdName.textContent = r[COL.name] || '';
+
+          tr.appendChild(tdDate);
+          tr.appendChild(tdTitle);
+          tr.appendChild(tdLink);
+          tr.appendChild(tdName);
+          tbody.appendChild(tr);
+        });
+
+        document.getElementById('submitted-card').style.display = '';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
